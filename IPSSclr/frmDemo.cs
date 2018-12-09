@@ -10,6 +10,7 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Threading;
 using PlateDetector;
+using System.IO;
 
 namespace IPSS
 {
@@ -222,6 +223,8 @@ namespace IPSS
             ofd.Filter = "Image files |*.bmp;*.jpg;*.png;*.BMP;*.JPG;*.PNG";
             ofd.ShowDialog();
             txtFilePath.Text = ofd.FileName;
+
+            btnGetPlate.Enabled = File.Exists(txtFilePath.Text);
         }
 
 
