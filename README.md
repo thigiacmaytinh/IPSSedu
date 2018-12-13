@@ -1,2 +1,1 @@
-# IPSSedu
-License plate reader source code
+To build Debug mode you must install Visual Studio 2013
