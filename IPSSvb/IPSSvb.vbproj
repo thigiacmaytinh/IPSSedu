@@ -73,7 +73,7 @@
     <ManifestKeyFile>QLGiuxe_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -101,17 +101,16 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV.UI">
-      <HintPath>..\emgucv310\bin\Emgu.CV.UI.dll</HintPath>
+      <HintPath>.\Emgu.CV.UI.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.World">
-      <HintPath>..\emgucv310\bin\Emgu.CV.World.dll</HintPath>
+      <HintPath>.\Emgu.CV.World.dll</HintPath>
     </Reference>
     <Reference Include="SVM">
-      <HintPath>..\lib\SVM.dll</HintPath>
+      <HintPath>.\SVM.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -299,7 +298,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\intro.ini" />
     <None Include="intro.ini" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -386,6 +384,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

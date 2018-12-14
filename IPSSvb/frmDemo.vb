@@ -17,6 +17,7 @@ Public Class frmDemo
 
         Dim img As New Image(Of Bgr, Byte)(bmp)
 
-        Text = detector.docbienso(img)
+        Label1.Text = detector.docbienso(img)
+        PictureBox1.Image = bmp
     End Sub
 End Class
