@@ -57,6 +57,7 @@ namespace IPSS
             {                
                 StopLoading();
                 MessageBox.Show("Can not find camera");
+                return;
             }
             for (int i = 0; i < videosources.Count; i++)
             {

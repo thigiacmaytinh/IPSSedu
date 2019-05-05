@@ -14,7 +14,7 @@
     <ProjectGuid>{1E77C093-A461-4612-BBBF-9D01A4CE8799}</ProjectGuid>
     <RootNamespace>OpenCVSharp</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
-    <ProjectName>OpenCVDotNet</ProjectName>
+    <ProjectName>TGMTbike</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

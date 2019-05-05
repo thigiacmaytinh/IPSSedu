@@ -126,13 +126,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="OpenCVDotNet\OpenCVDotNet.vcxproj">
-      <Project>{1e77c093-a461-4612-bbbf-9d01a4ce8799}</Project>
-      <Name>OpenCVDotNet</Name>
-    </ProjectReference>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <ProjectReference Include="TGMTbike\TGMTbike.vcxproj">
+      <Project>{1e77c093-a461-4612-bbbf-9d01a4ce8799}</Project>
+      <Name>TGMTbike</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
