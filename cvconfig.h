@@ -57,7 +57,6 @@
 
 /* DirectX */
 #define HAVE_DIRECTX
-#define HAVE_DIRECTX_NV12
 #define HAVE_D3D11
 #define HAVE_D3D10
 #define HAVE_D3D9
@@ -70,6 +69,12 @@
 
 /* FFMpeg video library */
 #define HAVE_FFMPEG
+
+/* ffmpeg's libswscale */
+#define HAVE_FFMPEG_SWSCALE
+
+/* ffmpeg in Gentoo */
+#define HAVE_GENTOO_FFMPEG
 
 /* Geospatial Data Abstraction Library */
 /* #undef HAVE_GDAL */
@@ -90,23 +95,20 @@
 /* #undef HAVE_INTELPERC */
 
 /* Intel Integrated Performance Primitives */
-#define HAVE_IPP
-#define HAVE_IPP_ICV_ONLY
+//#define HAVE_IPP
+//#define HAVE_IPP_ICV_ONLY
 
 /* Intel IPP Async */
 /* #undef HAVE_IPP_A */
 
 /* JPEG-2000 codec */
-#define HAVE_JASPER
+//#define HAVE_JASPER
 
 /* IJG JPEG codec */
 #define HAVE_JPEG
 
 /* libpng/png.h needs to be included */
 /* #undef HAVE_LIBPNG_PNG_H */
-
-/* GDCM DICOM codec */
-/* #undef HAVE_GDCM */
 
 /* V4L/V4L2 capturing support via libv4l */
 /* #undef HAVE_LIBV4L */
@@ -117,16 +119,13 @@
 /* NVidia Video Decoding API*/
 /* #undef HAVE_NVCUVID */
 
-/* NVidia Video Encoding API*/
-/* #undef HAVE_NVCUVENC */
-
 /* OpenCL Support */
 #define HAVE_OPENCL
 /* #undef HAVE_OPENCL_STATIC */
 /* #undef HAVE_OPENCL_SVM */
 
 /* OpenEXR codec */
-#define HAVE_OPENEXR
+//#define HAVE_OPENEXR
 
 /* OpenGL support*/
 /* #undef HAVE_OPENGL */
@@ -139,12 +138,6 @@
 
 /* PNG codec */
 #define HAVE_PNG
-
-/* Posix threads (pthreads) */
-/* #undef HAVE_PTHREADS */
-
-/* parallel_for with pthreads */
-/* #undef HAVE_PTHREADS_PF */
 
 /* Qt support */
 /* #undef HAVE_QT */
@@ -162,7 +155,7 @@
 /* #undef HAVE_TBB */
 
 /* TIFF codec */
-#define HAVE_TIFF
+//#define HAVE_TIFF
 
 /* Unicap video capture library */
 /* #undef HAVE_UNICAP */
@@ -188,21 +181,3 @@
 
 /* gPhoto2 library */
 /* #undef HAVE_GPHOTO2 */
-
-/* VA library (libva) */
-/* #undef HAVE_VA */
-
-/* Intel VA-API/OpenCL */
-/* #undef HAVE_VA_INTEL */
-
-/* Lapack */
-/* #undef HAVE_LAPACK */
-
-/* FP16 */
-#define HAVE_FP16
-
-/* Library was compiled with functions instrumentation */
-/* #undef ENABLE_INSTRUMENTATION */
-
-/* OpenVX */
-/* #undef HAVE_OPENVX */

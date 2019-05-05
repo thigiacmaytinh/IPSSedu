@@ -1,0 +1,3 @@
+[submodule "lib/opencv320"]
+	path = lib/opencv320
+	url = https://github.com/thigiacmaytinh/opencv320
