@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -24,7 +32,19 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
@@ -39,8 +59,14 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="..\lib\opencv320\OpenCV320_Debug.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="..\lib\opencv320\OpenCV320_Debug_x64.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="..\lib\opencv320\OpenCV320_Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="..\lib\opencv320\OpenCV320_Release_x64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -48,15 +74,31 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">obj\Car-$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">IPSScard</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">IPSScar-x64d</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">obj\Car-$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">IPSScar</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">IPSScar-x64</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>obj\$(Configuration)-x64\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>obj\$(Configuration)-x64\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,6 +161,67 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions> /bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)lib\jsoncpp\include\;$(SolutionDir)lib\TGMTcpp\src;$(SolutionDir)lib\opencv320\include;$(SolutionDir)lib\opencv320\contrib\line_descriptor\include;$(SolutionDir)lib\curl\include\;$(SolutionDir)lib\openssl\include;$(SolutionDir)lib\openssl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(Configuration)/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4324</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN64;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_DEBUG;_VARIADIC_MAX=10;CAR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(OutDir)IPSScard.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_DEBUG;CVAPI_EXPORTS;_VARIADIC_MAX=10;__OPENCV_BUILD=1;HAVE_WEBP;IMGCODECS_EXPORTS;VIDEOIO_EXPORTS;HIGHGUI_EXPORTS;CMAKE_INTDIR=\"Debug\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\opencl\1.2;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjasper;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libtiff;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libpng;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libwebp;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjpeg;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\zlib;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\ippicv\unpack\ippicv_win\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Half;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Iex;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmThread;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Imath;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmImf;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\ffmpeg_;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\opencl\1.2;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjasper;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libtiff;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libpng;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libwebp;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjpeg;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\zlib;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\ippicv\unpack\ippicv_win\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Half;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Iex;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmThread;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Imath;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmImf;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\ffmpeg_;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>opencv_ml320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\opencv320\3rdparty\lib\Debug-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>
+      </ImportLibrary>
+      <ProgramDataBaseFile>$(SolutionDir)bin\Debug\$(ProjectName)d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalOptions> /bigobj %(AdditionalOptions)</AdditionalOptions>
@@ -163,6 +266,65 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>opencv_ml320.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib\jsoncpp\project\vs2015\compiled_lib\Release;$(SolutionDir)lib\curl\lib\vs2015;$(SolutionDir)lib\openssl\lib\vs2015;$(SolutionDir)lib\zlib\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>
+      </ImportLibrary>
+      <ProgramDataBaseFile>$(SolutionDir)bin\Release\$(ProjectName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions> /bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)lib\jsoncpp\include\;$(SolutionDir)lib\TGMTcpp\src;$(SolutionDir)lib\opencv320\include;$(SolutionDir)lib\opencv320\contrib\line_descriptor\include;$(SolutionDir)lib\curl\include\;$(SolutionDir)lib\openssl\include;$(SolutionDir)lib\openssl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(Configuration)/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4324</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN64;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CAR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;CVAPI_EXPORTS;_VARIADIC_MAX=10;__OPENCV_BUILD=1;HAVE_WEBP;IMGCODECS_EXPORTS;VIDEOIO_EXPORTS;HIGHGUI_EXPORTS;CMAKE_INTDIR=\"Release\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\opencl\1.2;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjasper;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libtiff;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libpng;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libwebp;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjpeg;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\zlib;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\ippicv\unpack\ippicv_win\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Half;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Iex;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmThread;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Imath;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmImf;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\ffmpeg_;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\opencl\1.2;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjasper;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libtiff;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libpng;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libwebp;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\libjpeg;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\zlib;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\ippicv\unpack\ippicv_win\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Half;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Iex;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmThread;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\Imath;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\openexr\IlmImf;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include;$(SolutionDir)TGMTcpp\lib\opencv320\3rdparty\include\ffmpeg_;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\hal\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\core\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\flann\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgproc\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\ml\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\photo\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\video\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\imgcodecs\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\shape\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videoio\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\highgui\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\objdetect\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\superres\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\features2d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\calib3d\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\stitching\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\videostab\src;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\include;$(SolutionDir)TGMTcpp\lib\opencv320\modules\world\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:X64 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>opencv_ml320.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\jsoncpp\project\vs2015\compiled_lib\Release;$(SolutionDir)lib\curl\lib\vs2015;$(SolutionDir)lib\openssl\lib\vs2015;$(SolutionDir)lib\zlib\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
