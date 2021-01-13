@@ -5,8 +5,7 @@ using System.Text;
 using SVM;
 using System.Drawing;
 using System.IO;
-using Emgu.CV;
-using Emgu.CV.Structure;
+using OpenCVDotNet;
 
 namespace PlateDetector
 {
@@ -15,15 +14,9 @@ namespace PlateDetector
         Model g_modelNum;
         Model g_modelCharNum;
 
-        CascadeClassifier mPlateDetector;
-        CascadeClassifier mCharDetector;
-
         public Detector()
         {
             InitModelSVM();
-
-            mPlateDetector = new CascadeClassifier("bienso.xml");
-            mCharDetector = new CascadeClassifier("kytu.xml");
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,16 +28,10 @@ namespace PlateDetector
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Mat DetectPlate(Bitmap bmp)        
+        Bitmap DetectPlate(Bitmap bmp)        
         {
-            Image<Gray, Byte> img = new Image<Gray, byte>(bmp);
-            Mat mat = new Mat();
-            CvInvoke.EqualizeHist(img.Mat, mat);
-
-            Rectangle[] rects = mPlateDetector.DetectMultiScale(mat);
-            if (rects.Length == 0)
-                return null;
-            return new Mat(mat, rects[0]);
+            CVImage img = new CVImage(bmp);
+            return img.DetectPlate(true);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,7 +147,7 @@ namespace PlateDetector
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public string DetectChar(Mat matInput)
+        public string DetectChar(Bitmap bmp)
         {
             //giai đoạn nhận diện ký tự gồm 3 bước:
             //Bước 1: sắp xếp các ký tự từ trái qua phải
@@ -168,25 +155,21 @@ namespace PlateDetector
             //Bước 3: nhận diện các tập dữ liệu và nối thành chuỗi kết quả
 
 
-            //CVImage img = new CVImage(bmp);
-            //string chars = img.DetectChar();
+            CVImage img = new CVImage(bmp);
+            string chars = img.DetectChar();
 
-            //int nRects = (chars.Length - chars.Replace("_", "").Length + 1) / 4;
-            //if (nRects == 0)
-            //    return "";
+            int nRects = (chars.Length - chars.Replace("_", "").Length + 1) / 4;
+            if (nRects == 0)
+                return "";
 
-            //List<Rectangle> rects = new List<Rectangle>(nRects);
-            //string[] points = chars.Split(new char[] { '_' });
-            //for (int i = 0; i < nRects; i += 1)
-            //{
-            //    Rectangle rect = new Rectangle(int.Parse(points[i * 4 + 0]), int.Parse(points[i * 4 + 1]), int.Parse(points[i * 4 + 2]), int.Parse(points[i * 4 + 3]));
-            //    rects.Add(rect);
-            //}
+            List<Rectangle> rects = new List<Rectangle>(nRects);
+            string[] points = chars.Split(new char[] { '_' });
+            for (int i = 0; i < nRects; i += 1)
+            {
+                Rectangle rect = new Rectangle(int.Parse(points[i * 4 + 0]), int.Parse(points[i * 4 + 1]), int.Parse(points[i * 4 + 2]), int.Parse(points[i * 4 + 3]));
+                rects.Add(rect);
+            }
 
-
-            CvInvoke.Imshow("Mat input", matInput);
-            Rectangle[] rects = mCharDetector.DetectMultiScale(matInput, 1.1, 1);
-            Bitmap bmp = matInput.Bitmap;
 
             //ảnh các ký tự
             List<Bitmap> imgkytu = new List<Bitmap>(9);
@@ -199,7 +182,7 @@ namespace PlateDetector
             int[] toado = new int[10];
 
             //sắp xếp các ký tự từ trái qua phải, từ trên xuống dưới
-            for (int i = 0; i < rects.Length; i++)
+            for (int i = 0; i < nRects; i++)
             {
                 Rectangle rect = rects[i];
                 if (rect.Y < 65 || rect.Y > 165)
@@ -236,10 +219,6 @@ namespace PlateDetector
                 }
             }
 
-            string temp1 = "";
-            string temp2 = "";
-            string temp3 = "";
-            string temp4 = "";
             string[] temp5 = new string[6];
 
 
@@ -289,18 +268,23 @@ namespace PlateDetector
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public String GetLicensePlate(Bitmap bmp)
+        Bitmap Test(Bitmap bmp)
+        {
+            return bmp;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public string GetLicensePlate(Bitmap bmp)
         {
             //hàm trả về ký tự biển số và hiển thị ảnh biển số lên imgbox
-            String bienso = "Not found";
-            Mat imgPlate = DetectPlate(bmp);
+            string bienso = "Not found";
+            Bitmap imgPlate = DetectPlate(bmp);
             if (imgPlate != null)
             {
                 bienso = DetectChar(imgPlate);
             }
             return bienso;
         }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 }

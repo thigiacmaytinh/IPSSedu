@@ -18,13 +18,6 @@ namespace IPSS
         VideoCaptureDevice m_videoSource;
         Detector detector;
         Thread t2;
-
-        void ShowError(string error)
-        {
-            lblMessage.Text = error;
-            lblMessage.ForeColor = Color.Red;
-        }
-
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public frmDemo()
@@ -39,7 +32,7 @@ namespace IPSS
             timerProgressbar.Stop();
             progressBar1.Value = progressBar1.Minimum;
             progressBar1.Visible = false;
-            lblMessage.Text = "";
+            label2.Text = "";
             btnGetPlate.Enabled = true;
             btnStartScan.Enabled = true;
         }       
@@ -63,14 +56,14 @@ namespace IPSS
             {                
                 StopLoading();
                 MessageBox.Show("Can not find camera");
-                btnStartScan.Enabled = false;
+                rdCamera.Enabled = false;
+                rdImage.Select();
                 return;
             }
             for (int i = 0; i < videosources.Count; i++)
             {
                 cbCamera.Items.Add("Camera " + (i + 1).ToString());
             }
-
             cbCamera.SelectedIndex = 0;
             if (videosources != null)
             {
@@ -84,7 +77,7 @@ namespace IPSS
 
         void InitModel()
         {
-            lblMessage.Text = "Loading data, please wait...";
+            label2.Text = "Loading data, please wait...";
             detector = new Detector();
             btnStartScan.Enabled = true;
             StopLoading();
@@ -145,6 +138,11 @@ namespace IPSS
 
         private void frmDemo_Load(object sender, EventArgs e)
         {
+#if DEBUG
+            MessageBox.Show("Thuật toán gặp trục trặc với mode DEBUG, vui lòng build mode release");
+            this.Enabled = false;
+            return;
+#endif
             CheckForIllegalCrossThreadCalls = false;
 
             t2 = new Thread(new ThreadStart(InitModel));
@@ -194,15 +192,11 @@ namespace IPSS
 
         private void btnGetPlate_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "";
             if (txtFilePath.Text == "")
                 return;
             Bitmap bmp = new Bitmap(txtFilePath.Text);
             txtResult.Text = detector.GetLicensePlate(bmp);
-            if(txtResult.Text == "")
-            {
-                ShowError("Can not detect license plate");
-            }
+            picCamera.Image = bmp;
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -215,25 +209,7 @@ namespace IPSS
                 grpImage.Visible = false;
                 InitCamera();
             }
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            lblMessage.Text = "";
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image files |*.bmp;*.jpg;*.png;*.BMP;*.JPG;*.PNG";
-            ofd.ShowDialog();
-            txtFilePath.Text = ofd.FileName;
-            picCamera.ImageLocation = ofd.FileName;
-        }
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void rdImage_CheckedChanged(object sender, EventArgs e)
-        {
-            if(rdImage.Checked)                
+            else
             {
                 grpCamera.Visible = false;
                 grpImage.Visible = true;
@@ -242,7 +218,20 @@ namespace IPSS
                     m_videoSource.Stop();
                     picCamera.Image = null;
                 }
+                    
             }
         }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image files |*.bmp;*.jpg;*.png;*.BMP;*.JPG;*.PNG";
+            ofd.ShowDialog();
+            txtFilePath.Text = ofd.FileName;
+        }
+
+
     }
 }

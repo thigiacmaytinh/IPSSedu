@@ -39,7 +39,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerProgressbar = new System.Windows.Forms.Timer(this.components);
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdImage = new System.Windows.Forms.RadioButton();
             this.rdCamera = new System.Windows.Forms.RadioButton();
@@ -132,17 +132,17 @@
             this.timerProgressbar.Interval = 10;
             this.timerProgressbar.Tick += new System.EventHandler(this.timerProgressbar_Tick);
             // 
-            // lblMessage
+            // label2
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.ForeColor = System.Drawing.Color.Green;
-            this.lblMessage.Location = new System.Drawing.Point(67, 404);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(382, 31);
-            this.lblMessage.TabIndex = 3;
-            this.lblMessage.Text = "Loading camera, please wait...";
-            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(67, 404);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(382, 31);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Loading camera, please wait...";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox2
             // 
@@ -168,7 +168,6 @@
             this.rdImage.TabStop = true;
             this.rdImage.Text = "From image";
             this.rdImage.UseVisualStyleBackColor = true;
-            this.rdImage.CheckedChanged += new System.EventHandler(this.rdImage_CheckedChanged);
             // 
             // rdCamera
             // 
@@ -230,7 +229,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(541, 580);
-            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.picCamera);
             this.Controls.Add(this.grpCamera);
             this.Controls.Add(this.grpImage);
@@ -238,7 +237,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmDemo";
-            this.Text = "Phần mềm nhận dạng biển số - http://thigiacmaytinh.com";
+            this.Text = "Phần mềm nhận diện biển số - http://thigiacmaytinh.com";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDemo_FormClosed);
             this.Load += new System.EventHandler(this.frmDemo_Load);
             this.grpCamera.ResumeLayout(false);
@@ -261,7 +260,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timerProgressbar;
         private System.Windows.Forms.TextBox txtResult;
-        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdImage;
         private System.Windows.Forms.RadioButton rdCamera;
