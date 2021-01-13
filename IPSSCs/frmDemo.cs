@@ -139,7 +139,7 @@ namespace IPSS
         private void frmDemo_Load(object sender, EventArgs e)
         {
 #if DEBUG
-            MessageBox.Show("Thuật toán gặp trục trặc với mode DEBUG, vui lòng build mode release");
+            MessageBox.Show("Để chạy được mode Debug vui lòng cài Visual Studio 2012");
             this.Enabled = false;
             return;
 #endif
@@ -192,7 +192,7 @@ namespace IPSS
 
         private void btnGetPlate_Click(object sender, EventArgs e)
         {
-            if (txtFilePath.Text == "")
+            if (txtFilePath.Text == "" || detector == null)
                 return;
             Bitmap bmp = new Bitmap(txtFilePath.Text);
             txtResult.Text = detector.GetLicensePlate(bmp);
