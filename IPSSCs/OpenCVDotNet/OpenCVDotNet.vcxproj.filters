@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CVImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stdafx.cpp" />
+    <ClCompile Include="ObjDetect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVArr.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVCapture.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVHistogram.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVImage.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVPair.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVVideoWriter.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVWindow.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CVException.h" />
+    <ClInclude Include="CVRgbPixel.h" />
+    <ClInclude Include="CVUtils.h" />
+    <ClInclude Include="ObjDetect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{385fe765-a69e-4eef-8ff7-0fb2516a2199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{bd6f62c0-1377-4789-9e04-8eed5ee8f674}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
