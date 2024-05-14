@@ -22,7 +22,7 @@
     <ProjectGUID>{C38273AE-6AA2-4CC0-8D36-BDE955611F3F}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
-    <ProjectName>CarDetector</ProjectName>
+    <ProjectName>IPSScar</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -146,7 +146,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>opencv_ml320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_ml320d.lib;opencv_videoio320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\jsoncpp\project\vs2015\compiled_lib\Debug;$(SolutionDir)lib\opencv320\3rdparty\lib\Debug;$(SolutionDir)lib\curl\lib\vs2015;$(SolutionDir)lib\openssl\lib\vs2015;$(SolutionDir)lib\zlib\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -207,7 +207,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X64 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>opencv_ml320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_ml320d.lib;opencv_videoio320d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\opencv320\3rdparty\lib\Debug-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -266,7 +266,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>opencv_ml320.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_ml320.lib;opencv_videoio320.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\jsoncpp\project\vs2015\compiled_lib\Release;$(SolutionDir)lib\curl\lib\vs2015;$(SolutionDir)lib\openssl\lib\vs2015;$(SolutionDir)lib\zlib\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -325,7 +325,7 @@
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X64 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>opencv_ml320.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_ml320.lib;opencv_videoio320.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\jsoncpp\project\vs2015\compiled_lib\Release;$(SolutionDir)lib\curl\lib\vs2015;$(SolutionDir)lib\openssl\lib\vs2015;$(SolutionDir)lib\zlib\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>atlthunk.lib;atlsd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -368,6 +368,26 @@
     <ClInclude Include="..\lib\TGMTcpp\src\TGMTutil.h" />
     <ClInclude Include="OCR.h" />
     <ClInclude Include="TGMTCar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib\opencv320\modules\core\opencv_core.vcxproj">
+      <Project>{10b8265c-d814-3269-9aef-6c50f1815909}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\opencv320\modules\highgui\opencv_highgui.vcxproj">
+      <Project>{8e809e09-d93a-34a4-89dd-2a962dd66f4b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\opencv320\modules\imgcodecs\opencv_imgcodecs.vcxproj">
+      <Project>{6d369816-6500-3b97-9a71-2f456b881693}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\opencv320\modules\imgproc\opencv_imgproc.vcxproj">
+      <Project>{b326aaa3-5b95-3ddc-9303-94fdad8439a6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\opencv320\modules\ml\opencv_ml.vcxproj">
+      <Project>{c4b51150-fbc7-30e0-af72-8685de90bf2e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\opencv320\modules\videoio\opencv_videoio.vcxproj">
+      <Project>{7e8dcdc6-dbb6-394e-b1c2-c1cbdc990655}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

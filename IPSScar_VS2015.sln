@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CarDetector", "IPSScar\IPSScar.vcxproj", "{C38273AE-6AA2-4CC0-8D36-BDE955611F3F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPSScar", "IPSScar\IPSScar.vcxproj", "{C38273AE-6AA2-4CC0-8D36-BDE955611F3F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opencv_core", "lib\opencv320\modules\core\opencv_core.vcxproj", "{10B8265C-D814-3269-9AEF-6C50F1815909}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libjpeg", "lib\opencv320\3rdparty\libjpeg\libjpeg.vcxproj", "{D27AE347-08BC-4938-B473-6365CAB8E3C2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "lib\opencv320\3rdparty\libpng\libpng.vcxproj", "{01BEE73E-6F42-4714-9CE6-D968CE1F49D6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opencv_videoio", "lib\opencv320\modules\videoio\opencv_videoio.vcxproj", "{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,14 @@ Global
 		{01BEE73E-6F42-4714-9CE6-D968CE1F49D6}.Release|Win32.Build.0 = Release|Win32
 		{01BEE73E-6F42-4714-9CE6-D968CE1F49D6}.Release|x64.ActiveCfg = Release|x64
 		{01BEE73E-6F42-4714-9CE6-D968CE1F49D6}.Release|x64.Build.0 = Release|x64
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Debug|Win32.Build.0 = Debug|Win32
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Debug|x64.ActiveCfg = Debug|x64
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Debug|x64.Build.0 = Debug|x64
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Release|Win32.ActiveCfg = Release|Win32
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Release|Win32.Build.0 = Release|Win32
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Release|x64.ActiveCfg = Release|x64
+		{7E8DCDC6-DBB6-394E-B1C2-C1CBDC990655}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
